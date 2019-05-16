@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TitleText"
+        android:text="Android安全" />
+
+    <cauc.edu.cn.mobilesafer.util.ui.FocusedTextView
+        android:id="@+id/text_marquee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="中国民航大学-信息安全专业-沈滨伟-2019年本科毕业设计！"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <GridView
+        android:id="@+id/home_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"
+        android:verticalSpacing="10dp" />
+
+</LinearLayout>

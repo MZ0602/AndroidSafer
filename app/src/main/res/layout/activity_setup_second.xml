@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TitleText"
+        android:text="2.手机卡绑定"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
+        android:text="       通过绑定SIM卡：重启手机若发现SIM卡变化，就会发送报警短信。"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <cauc.edu.cn.mobilesafer.util.ui.SettingsItem
+        xmlns:mobilesafer="http://schemas.android.com/apk/res/cauc.edu.cn.mobilesafer"
+        android:id="@+id/settings_item_bind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        mobilesafer:title="点击绑定SIM"
+        mobilesafer:desoff="SIM卡未绑定"
+        mobilesafer:deson="SIM卡已绑定">
+    </cauc.edu.cn.mobilesafer.util.ui.SettingsItem>
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/presence_invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/presence_online"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/presence_invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/presence_invisible"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bind"/>
+
+        <Button
+            style="@style/prePage"/>
+
+        <Button
+            style="@style/nextPage"/>
+    </RelativeLayout>
+
+</LinearLayout>

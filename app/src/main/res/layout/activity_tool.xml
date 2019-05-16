@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cauc01"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TitleText"
+        android:text="手机工具" />
+
+    <TextView
+        android:id="@+id/phone_num_query"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/btn_green_pressed"
+        android:drawableLeft="@android:drawable/btn_star_big_on"
+        android:gravity="center"
+        android:text="号码归属地查询"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/common_number_query"
+        android:layout_width="229dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_green_pressed"
+        android:drawableLeft="@android:drawable/btn_star_big_on"
+        android:gravity="center"
+        android:text="常用号码查询"
+        android:textSize="20sp" />
+
+</LinearLayout>

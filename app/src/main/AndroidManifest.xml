@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cauc.edu.cn.mobilesafer">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--获取手机SIM卡信息需要用到的权限。属于危险权限！还需要在代码执行处动态申请！-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--获取手机系统联系人需要用到的权限。属于危险权限！还需要在代码执行处动态申请！-->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!--获取SMS短信新权限、手机开机广播接收权限-->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 获取准确GPS坐标的权限，通过GPS芯片接收卫星的定位信息，定位精度达10米以内-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--获取粗略坐标的权限(网络定位时使用)，通过WiFi或移动基站的方式获取用户错略的经纬度信息，定位精度大概误差在30~1500米 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 在窗体上挂载view的权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 去电广播监听的权限 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <!-- 拦截电话需要用到的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 读写日志需要用到的权限 -->
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <!-- 杀死进程所需要的权限 -->
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <!-- 创建快捷方式用到的权限 -->
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- 获取指定包名应用缓存信息的权限 -->
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <!-- 获取清理应用缓存信息的权限！但此类权限仅限系统应用使用，无奈吧！-->
+    <!-- <uses-permission android:name="android.permission.CLEAR_APP_CACHE" /> -->
+    <!-- <uses-permission android:name="android.permission.DELETE_CACHE_FILES" /> -->
+
+    <application
+        android:name="cauc.edu.cn.mobilesafer.util.MyMobileApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher_my"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_launcher_my"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--配置程序最先启动的活动为SplashActivity-->
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--将HomeActivity设置为隐式Intent启动的Activity-->
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.Home" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.burglar.SetupOverActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.burglar.SetupFirstActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.burglar.SetupSecondActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.burglar.SetupThirdActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.burglar.SetupFourthActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.burglar.ContactActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.advancedTool.ToolActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.advancedTool.PhoneNumQueryActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.blackNumber.CommunicationGuardActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.appManager.AppManagerActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.advancedTool.CommonNumberActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.virusCheck.AntiVirusActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.cacheClear.OptimizeClearActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.cacheClear.BaseOptimizeClearActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.cacheClear.SDCardClearActivity" />
+        <activity android:name="cauc.edu.cn.mobilesafer.activity.burglar.SendAlarmAcitivty" />
+
+        <!--静态注册接收开机广播的广播接收器，用于防盗功能验证SIM卡是否被替换-->
+        <!--静态注册广播接收器的作用在于即使未打开应用程序的情况下，仍能正常接收并响应广播-->
+        <receiver
+            android:name="cauc.edu.cn.mobilesafer.receiver.RootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!--用于手机被盗后，处理安全联系人发来的应急短信的短信广播接收器-->
+        <receiver
+            android:name="cauc.edu.cn.mobilesafer.receiver.SmsReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <!--防盗功能模块用于获取手机超级管理员权限的接收器-->
+        <receiver
+            android:name="cauc.edu.cn.mobilesafer.receiver.DeviceAdmin"
+            android:enabled="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+               android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_sample" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 配置手机桌面的窗体小部件 -->
+
+        <!--用于防盗模块向安全号码发送位置信息的服务-->
+        <service
+            android:name="cauc.edu.cn.mobilesafer.service.LocationService"
+            android:enabled="true"
+            android:exported="true" />
+        <!--用于拦截黑名单号码的短信、电话的中断服务-->
+        <service
+            android:name="cauc.edu.cn.mobilesafer.service.InterceptService"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
+</manifest>
